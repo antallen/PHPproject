@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('customer', 'CustomerController');
+//Route::resource('customer', 'CustomerController');
+Route::get('customer', 'CustomerController@index');
+Route::post('customer', 'CustomerController@new');
