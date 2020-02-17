@@ -5,7 +5,7 @@
         </a>
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-            <a href="{{ action('CustomerController@new') }}" class="nav-link">
+            <a href="{{ action('CustomerController@newcustomer') }}" class="nav-link">
                 新增客戶
             </a>
             <a href="{{ action('CustomerController@index') }}" class="nav-link">
