@@ -16,7 +16,7 @@ class CustomerController extends Controller
     }
 
     //新增客戶資料
-    public function new(){
+    public function new() {
         return "Hello";
     }
 }
