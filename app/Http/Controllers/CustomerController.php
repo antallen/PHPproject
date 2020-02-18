@@ -35,7 +35,8 @@ class CustomerController extends Controller
 
     //修改客戶資料表格
     public function edit(Request $request){
-        $customers=$request->Cusid;
-        dd($customers);
+        //$customers=$request->Cusid;
+        //dd($customers);
+        return View::('edit',['Cusid'=>$request->Cusid,'Name'=>$request->Name,'Address'=>$request->Address,'Phone'=>$request->Phone]);
     }
 }
