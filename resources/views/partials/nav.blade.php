@@ -11,7 +11,7 @@
             </li>
             <li class="nav-item">
                 <a href="{{ action('CustomerController@new') }}" class="nav-link">
-                    新增客戶
+                新增客戶
                 </a>
             </li>
         </ul>
