@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title','新增客戶')
 @section('content')
-<form action="{{ route(post, 'new') }}" method="POST">
+<form action="{{ route(post, 'new') }}">
     @csrf
     <div class="row justify-content-center">
     <div class="col-md-10">
