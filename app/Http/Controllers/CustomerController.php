@@ -17,7 +17,7 @@ class CustomerController extends Controller
 
     //新增客戶資料
     public function new() {
-        $customers = Customer::all();
+        //$customers = Customer::all();
         return View::make('new',['customers' => $customers]);
     }
 
