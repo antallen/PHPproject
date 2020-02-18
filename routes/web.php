@@ -18,5 +18,5 @@ Route::get('/', function () {
 //Route::resource('customer', 'CustomerController');
 Route::get('customer','CustomerController@index');
 //Route::get('new','CustomerController@new');
-Route::view('/new','new');
+Route::view('/new','CustomerController@new');
 Route::post('/store','CustomerController@store');
