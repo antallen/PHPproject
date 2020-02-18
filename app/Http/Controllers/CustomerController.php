@@ -24,7 +24,12 @@ class CustomerController extends Controller
 
     //將新客戶資料寫入資料庫
     public function store(Request $request){
-        $customers = $request->only('Cusid','Name','Address','Phone');
-        dd($customers);
+        $customers = new Customer;
+        $customers->Cusid=$request->input('Cusid');
+        $customers->Name=$request->input('Name');
+        $customers->Address=$request->input('Address');
+        $customers->Phone=$request->input('Phone');
+        $customers->save();
+        return redirect('customer');
     }
 }
