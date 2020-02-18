@@ -37,6 +37,6 @@ class CustomerController extends Controller
     public function edit(Request $request){
         //$customers=$request->Cusid;
         //dd($customers);
-        return View::('edit',['Cusid'=>$request->Cusid,'Name'=>$request->Name,'Address'=>$request->Address,'Phone'=>$request->Phone]);
+        return View::make('edit',['Cusid'=>$request->Cusid,'Name'=>$request->Name,'Address'=>$request->Address,'Phone'=>$request->Phone]);
     }
 }
