@@ -12,6 +12,7 @@
             <th>客戶編號</th>
             <th>客戶姓名</th>
             <th>客戶電話</th>
+            <td>資料處理</td>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                     <td><?php echo $customer->Cusid; ?></td>
                     <td><?php echo $customer->Name; ?></td>
                 <td><?php echo $customer->Phone; ?></td>
+                <td><a href="{{ action('CustomerController@edit', ['Cusid'=> $Cusid->customer->Cusid]) }}" class="btn btn-success btn-sm">編輯</a></td>
             </tr>
             <?php }  ?>
         </tbody>

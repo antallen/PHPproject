@@ -32,4 +32,10 @@ class CustomerController extends Controller
         $customers->save();
         return redirect('customer');
     }
+
+    //修改客戶資料表格
+    public function edit(Request $request){
+        $customers=$request->Cusid;
+        dd($customers);
+    }
 }

@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::get('customer','CustomerController@index');
 Route::get('new','CustomerController@new');
 Route::post('store','CustomerController@store');
+Route::get('edit','CustomerController@edit');
