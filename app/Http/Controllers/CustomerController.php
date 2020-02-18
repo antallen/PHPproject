@@ -20,4 +20,10 @@ class CustomerController extends Controller
         $customers = Customer::all();
         return View::make('new',['customers' => $customers]);
     }
+
+    //將新客戶資料寫入資料庫
+    public function store(Request $request){
+        $customers = $request->only('Cusid','Name','Address','Phone');
+        dd($customers);
+    }
 }
