@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title','新增客戶')
 @section('content')
-<form action="{{ action('store') }}" method="post">
+<form action="{{ action('CustomerController@store') }}" method="post">
     
     <div class="row justify-content-center">
     <div class="col-md-8">
