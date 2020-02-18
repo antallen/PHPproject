@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('title','新增客戶')
 @section('content')
-<form action="{{ route('store') }}" method="GET">
-    @csrf
+<form action="{{ route('store') }}" method="POST">
+    
     <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
