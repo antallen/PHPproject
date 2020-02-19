@@ -46,7 +46,7 @@ class CustomerController extends Controller
             $customers = Customer::all();
             return View::make('board',['customers' => $customers]);
         } 
-        $customers = App\Customer::find([
+        $customers = Customer::find([
             'Cusid'=> $request->oldId
         ]);
         dd($customers);
