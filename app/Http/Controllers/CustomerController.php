@@ -59,4 +59,11 @@ class CustomerController extends Controller
         $customers = Customer::all();
         return View::make('board',['customers' => $customers]); 
     }
+
+    //刪除客戶資料
+    public function delete(Request $request){
+        Customer::where('Cusid',$request->input('Cusid'))->delete();
+        $customers = Customer::all();
+        return View::make('board',['customers' => $customers]); 
+    }
 }
