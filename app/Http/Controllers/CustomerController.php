@@ -24,6 +24,10 @@ class CustomerController extends Controller
 
     //將新客戶資料寫入資料庫
     public function store(Request $request){
+        if ($request->cancel){
+            $customers = Customer::all();
+            return View::make('board',['customers' => $customers]);
+        }
         $customers = new Customer;
         $customers->Cusid=$request->input('Cusid');
         $customers->Name=$request->input('Name');
