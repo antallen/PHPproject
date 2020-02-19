@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title','編輯客戶資料')
 @section('content')
-<form action="" method="post">
+<form action="{{ action('CustomerController@update') }}" method="post">
     @csrf
     <div class="row justify-content-center">
     <div class="col-md-8">

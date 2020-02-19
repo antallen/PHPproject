@@ -39,4 +39,13 @@ class CustomerController extends Controller
         //dd($customers);
         return View::make('edit',['Cusid'=>$request->Cusid,'Name'=>$request->Name,'Address'=>$request->Address,'Phone'=>$request->Phone]);
     }
+
+    //更新客戶資料
+    public function update(Request $request){
+        if ($request->cancel){
+            $customers = Customer::all();
+            return View::make('board',['customers' => $customers]);
+        }
+        return '555';
+    }
 }
