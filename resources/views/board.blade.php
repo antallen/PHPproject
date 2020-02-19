@@ -28,7 +28,7 @@
                                 'Name'=>$customer->Name,
                                 'Address'=>$customer->Address,
                                 'Phone'=>$customer->Phone]) }}" class="btn btn-success btn-sm">編輯</a>
-                <a href="{{ action('CustomerController@delete', ['Cusid'=>$customer->Cusid]) }}" class="btn btn-danger btn-sm" _method="post">刪除</a></td>
+                <a href="{{ action('CustomerController@delete', ['Cusid'=>$customer->Cusid]) }}" class="btn btn-danger btn-sm">刪除</a></td>
             </tr>
             <?php }  ?>
         </tbody>
