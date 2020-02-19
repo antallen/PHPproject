@@ -21,4 +21,4 @@ Route::get('new','CustomerController@new');
 Route::post('store','CustomerController@store');
 Route::get('edit','CustomerController@edit');
 Route::post('update','CustomerController@update');
-Route::post('delete','CustomerController@delete');
+Route::post('delete','CustomerController@delete',);
