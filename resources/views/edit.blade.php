@@ -39,6 +39,10 @@
             <div class="form-group row">
                 <div class="col-sm-10">
                     <input type="submit" class="btn btn-primary" value="送出">
+                    <input type="hidden" id="oldId" name="oldId"  value="<?php echo $_GET['Cusid']; ?>">
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" class="btn btn-warning" value="取消" name="cancel">
                 </div>
             </div>  
         </div>
