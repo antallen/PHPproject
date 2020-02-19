@@ -45,7 +45,10 @@ class CustomerController extends Controller
         if ($request->cancel){
             $customers = Customer::all();
             return View::make('board',['customers' => $customers]);
-        }
-        return '555';
+        } 
+        $customers = App\Customer::find([
+            'Cusid'=> $request->oldId
+        ]);
+        dd($customers);
     }
 }
