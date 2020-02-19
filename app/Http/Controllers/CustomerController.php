@@ -52,6 +52,6 @@ class CustomerController extends Controller
                                     'Address'=> $request->input('Address'),
                                     'Phone'=> $request->input('Phone')
         ]);
-        return View::make('board');
+        return View::make('board',['customers' => $customers]);
     }
 }
