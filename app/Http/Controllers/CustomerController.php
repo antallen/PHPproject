@@ -46,7 +46,7 @@ class CustomerController extends Controller
             $customers = Customer::all();
             return View::make('board',['customers' => $customers]);
         } 
-        $customers = Customer::where('Cusid',$request->input(oldID))
+        $customers = Customer::where('Cusid',$request->input(oldId))
                                     ->update(['Cusid'=> $request->input(Cusid),
                                     'Name'=> $request->input(Name),
                                     'Address'=> $request->input(Address),
