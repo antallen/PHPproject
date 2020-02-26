@@ -98,6 +98,7 @@ mysql&gt; <span class="hljs-built_in">exit</span></code></pre>
 <li>編寫 app/Car.php 檔案<pre><code class="language-php"><span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Eloquent</span>\<span class="hljs-title">Model</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Customer</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
   <span class="hljs-comment">//定義相關連結表格</span>
@@ -107,14 +108,19 @@ mysql&gt; <span class="hljs-built_in">exit</span></code></pre>
 
   <span class="hljs-comment">//取得該輛車的車主ＩＤ</span>
   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">customer</span><span class="hljs-params">()</span></span>{  
-    <span class="hljs-keyword">return</span> <span class="hljs-variable">$this</span>-&gt;belongsTo(CustomerEloquent::class,<span class="hljs-string">'Cusid'</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$this</span>-&gt;belongsTo(Customer::class,<span class="hljs-string">'Cusid'</span>);
   }
 }</code></pre>
 </li>
 <li>修改 app/Customer.php 檔案<pre><code class="language-php"><span class="hljs-comment">//略過前面的程式</span>
-<span class="hljs-comment">//取得客戶的車牌資料</span>
-<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cars</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-variable">$this</span>-&gt;hasMany(CarEloquent::Class,<span class="hljs-string">'Cusid'</span>);
+<span class="hljs-comment">//增加下列一行程式</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Car</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Customer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+  <span class="hljs-comment">//中間程式略過</span>
+  <span class="hljs-comment">//取得客戶的車牌資料</span>
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cars</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-variable">$this</span>-&gt;hasMany(Car::Class,<span class="hljs-string">'Cusid'</span>);
+  }
 }</code></pre>
 </li>
 </ul>
@@ -141,7 +147,7 @@ mysql&gt; <span class="hljs-built_in">exit</span></code></pre>
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">(Request <span class="hljs-variable">$request</span>)</span> </span>{
      <span class="hljs-keyword">if</span> (<span class="hljs-variable">$request</span>-&gt;has(<span class="hljs-string">'Cusid'</span>)){
         <span class="hljs-variable">$cusid</span> = <span class="hljs-variable">$request</span>-&gt;Cusid;
-        <span class="hljs-variable">$cars</span> = Car::where(<span class="hljs-string">'Cusid'</span>,<span class="hljs-variable">$request</span>-&gt;input(<span class="hljs-string">'Cusid'</span>));
+        <span class="hljs-variable">$cars</span> = Car::where(<span class="hljs-string">'Cusid'</span>,<span class="hljs-variable">$request</span>-&gt;Cusid)-&gt;cars();
         <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'car'</span>,[<span class="hljs-string">'Cusid'</span> =&gt; <span class="hljs-variable">$cusid</span>,<span class="hljs-string">'cars'</span> =&gt; <span class="hljs-variable">$cars</span>]);
       } <span class="hljs-keyword">else</span> {
         <span class="hljs-variable">$customers</span> = Customer::all();

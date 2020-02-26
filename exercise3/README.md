@@ -71,7 +71,8 @@
     <?php
     namespace App;
     use Illuminate\Database\Eloquent\Model;
-    
+    use App\Customer;
+
     class Car extends Model {
       //定義相關連結表格
       protected $table = 'cars';
@@ -80,16 +81,21 @@
 
       //取得該輛車的車主ＩＤ
       public function customer(){  
-        return $this->belongsTo(CustomerEloquent::class,'Cusid');
+        return $this->belongsTo(Customer::class,'Cusid');
       }
     }
     ```
   + 修改 app/Customer.php 檔案
     ```php
     //略過前面的程式
-    //取得客戶的車牌資料
-    public function cars(){
-        return $this->hasMany(CarEloquent::Class,'Cusid');
+    //增加下列一行程式
+    use App\Car;
+    class Customer extends Model {
+      //中間程式略過
+      //取得客戶的車牌資料
+      public function cars(){
+          return $this->hasMany(Car::Class,'Cusid');
+      }
     }
     ```
   
@@ -117,7 +123,7 @@
         public function index(Request $request) {
          if ($request->has('Cusid')){
             $cusid = $request->Cusid;
-            $cars = Car::where('Cusid',$request->input('Cusid'));
+            $cars = Car::where('Cusid',$request->Cusid)->cars();
             return View::make('car',['Cusid' => $cusid,'cars' => $cars]);
           } else {
             $customers = Customer::all();
