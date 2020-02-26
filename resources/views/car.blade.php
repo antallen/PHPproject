@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
     <div class="col-md-10">
     <div class="card">
-        <div class="card-header"><?php echo $customers->Name; ?>客戶車輛列表</div>
+        <div class="card-header"><?php echo $customer->Name; ?>客戶車輛列表</div>
         <div class="card-body p-1">
         <table class="table table-hover m-0">
             <thead class="thead-darty">
