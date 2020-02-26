@@ -146,9 +146,9 @@ mysql&gt; <span class="hljs-built_in">exit</span></code></pre>
     <span class="hljs-comment">//顯示車主所擁有的車輛</span>
     <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">(Request <span class="hljs-variable">$request</span>)</span> </span>{
      <span class="hljs-keyword">if</span> (<span class="hljs-variable">$request</span>-&gt;has(<span class="hljs-string">'Cusid'</span>)){
-        <span class="hljs-variable">$cusid</span> = <span class="hljs-variable">$request</span>-&gt;Cusid;
-        <span class="hljs-variable">$cars</span> = Car::where(<span class="hljs-string">'Cusid'</span>,<span class="hljs-variable">$request</span>-&gt;Cusid)-&gt;cars();
-        <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'car'</span>,[<span class="hljs-string">'Cusid'</span> =&gt; <span class="hljs-variable">$cusid</span>,<span class="hljs-string">'cars'</span> =&gt; <span class="hljs-variable">$cars</span>]);
+        <span class="hljs-variable">$customer</span> = Customer::where(<span class="hljs-string">'Cusid'</span>,<span class="hljs-variable">$request</span>-&gt;Cusid)-&gt;get();
+        <span class="hljs-variable">$cars</span> = Car::where(<span class="hljs-string">'Cusid'</span>,<span class="hljs-variable">$request</span>-&gt;Cusid)-&gt;get();
+        <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'car'</span>,[<span class="hljs-string">'customer'</span>=&gt;<span class="hljs-variable">$customer</span>,<span class="hljs-string">'cars'</span>=&gt;<span class="hljs-variable">$cars</span>]);
       } <span class="hljs-keyword">else</span> {
         <span class="hljs-variable">$customers</span> = Customer::all();
         <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'board'</span>,[<span class="hljs-string">'customers'</span> =&gt; <span class="hljs-variable">$customers</span>]); 
@@ -180,7 +180,7 @@ Route::get(<span class="hljs-string">'car'</span>,<span class="hljs-string">'Car
 &lt;div class="row justify-content-center"&gt;
   &lt;div class="col-md-10"&gt;
     &lt;div class="card"&gt;
-      &lt;div class="card-header"&gt;客戶車輛列表&lt;/div&gt;
+      &lt;div class="card-header"&gt;客戶: {{ $customer[0]-&gt;Name }} 車輛清單&lt;/div&gt;
       &lt;div class="card-body p-1"&gt;
         &lt;table class="table table-hover m-0"&gt;
           &lt;thead class="thead-darty"&gt;

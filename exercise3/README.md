@@ -122,9 +122,9 @@
         //顯示車主所擁有的車輛
         public function index(Request $request) {
          if ($request->has('Cusid')){
-            $cusid = $request->Cusid;
-            $cars = Car::where('Cusid',$request->Cusid)->cars();
-            return View::make('car',['Cusid' => $cusid,'cars' => $cars]);
+            $customer = Customer::where('Cusid',$request->Cusid)->get();
+            $cars = Car::where('Cusid',$request->Cusid)->get();
+            return View::make('car',['customer'=>$customer,'cars'=>$cars]);
           } else {
             $customers = Customer::all();
             return View::make('board',['customers' => $customers]); 
@@ -156,7 +156,7 @@
     <div class="row justify-content-center">
       <div class="col-md-10">
         <div class="card">
-          <div class="card-header">客戶車輛列表</div>
+          <div class="card-header">客戶: {{ $customer[0]->Name }} 車輛清單</div>
           <div class="card-body p-1">
             <table class="table table-hover m-0">
               <thead class="thead-darty">
