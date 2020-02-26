@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Customer;
 
 class Car extends Model
 {
@@ -13,6 +14,6 @@ class Car extends Model
 
     //取得該輛車的車主ＩＤ
     public function customers(){  
-        return $this->belongsTo(CustomerEloquent::class,'Cusid');
+        return $this->belongsTo(Customer::class,'Cusid');
     }
 }

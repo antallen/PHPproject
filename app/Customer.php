@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Car;
 
 class Customer extends Model
 {
@@ -13,6 +14,6 @@ class Customer extends Model
 
     //取得客戶的車牌資料
     public function cars(){
-        return $this->hasMany(CarEloquent::Class,'Cusid');
+        return $this->hasMany(Car::Class,'Cusid');
     }
 }

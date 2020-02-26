@@ -12,9 +12,9 @@ class CarController extends Controller
 {
     //顯示車主所擁有的車輛
     public function index(Request $request) {
-        if ($request->has('Cusid')){
+        if ($request->Cusid){
             $cusid = $request->Cusid;
-            $cars = Car::where('Cusid',$request->input('Cusid'));
+            $cars = Car::where('Cusid',$request->Cusid)->cars();
             return View::make('car',['Cusid' => $cusid,'cars' => $cars]);
         } else {
             $customers = Customer::all();
