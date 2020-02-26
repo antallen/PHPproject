@@ -15,8 +15,8 @@ class CarController extends Controller
         if ($request->has('Cusid')){
             $customer = Customer::where('Cusid',$request->Cusid)->get();
             $cars = Car::where('Cusid',$request->Cusid)->get();
-            return View::make('car',['customer'=>$customer,'cars'=>$cars]);
-            //dd($customer);
+            //return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+            dd($customer);
         } else {
             $customers = Customer::all();
             return View::make('board',['customers' => $customers]); 
