@@ -10,4 +10,9 @@ class Customer extends Model
     protected $table = 'customers';
     protected $primarykey = 'Cusid';
     public $timestamps = true;
+
+    //取得客戶的車牌資料
+    public function cars(){
+        return $this->hasMany(CarEloquent::Class,'Cusid');
+    }
 }

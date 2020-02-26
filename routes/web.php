@@ -22,3 +22,4 @@ Route::post('store','CustomerController@store');
 Route::get('edit','CustomerController@edit');
 Route::post('update','CustomerController@update');
 Route::get('delete','CustomerController@delete');
+Route::get('car','CarController@index');

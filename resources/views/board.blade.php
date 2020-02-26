@@ -23,7 +23,9 @@
                     <td><?php echo $customer->Cusid; ?></td>
                     <td><?php echo $customer->Name; ?></td>
                 <td><?php echo $customer->Phone; ?></td>
-                <td><a href="{{ action('CustomerController@edit', 
+                <td>
+                    <a href="{{ action('CarController@index',['Cusid'=>$customer->Cusid]) }}" class="btn btn-success btn-sm">車輛</a>
+                    <a href="{{ action('CustomerController@edit', 
                                 ['Cusid'=>$customer->Cusid,
                                 'Name'=>$customer->Name,
                                 'Address'=>$customer->Address,
