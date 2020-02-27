@@ -11,9 +11,7 @@
             <div class="form-group row">
                 <div class="col-sm-2"></div>
                 <label for="Cusid" class="col-sm-2 col-form-label">客戶編號</label>
-                <div class="col-sm-8">
-                    {{ $Cusid }}
-                </div>
+                <div class="col-sm-8">{{ $Cusid }}</div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-2"></div>

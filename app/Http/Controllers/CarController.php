@@ -30,6 +30,7 @@ class CarController extends Controller
     }
     //儲存客戶車輛資料
     public function store(Request $request){
-        dd($request);
+        $car=$request->only('Cusid','Carno','CarStyleid');
+        dd($car);
     }
 }
