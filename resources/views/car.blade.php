@@ -27,7 +27,7 @@
                                     ['Cusid'=>$customer[0]->Cusid,
                                     'Carno'=>$car->Carno,
                                     'CarStyleid'=>$car->CarStyleid]) }}" class="btn btn-success btn-sm">編輯</a>
-                    <a href="{{ action('CarController@delete', ['Carno'=>$car->Carno]) }}" class="btn btn-danger btn-sm">刪除</a></td>
+                    <a href="{{ action('CarController@delete', ['Carno'=>$car->Carno,'Cusid'=>$customer[0]->Cusid]) }}" class="btn btn-danger btn-sm">刪除</a></td>
                     </tr>
                     <?php }  ?>
                 </tbody>
