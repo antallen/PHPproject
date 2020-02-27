@@ -4,7 +4,8 @@
 <div class="row justify-content-center">
     <div class="col-md-10">
     <div class="card">
-        <div class="card-header"><h6 class="col-md-8 text-left">客戶: {{ $customer[0]->Name }} 車輛清單</h6>
+        <div class="card-header">
+            <h6 class="card-title col-md-8 text-left">客戶: {{ $customer[0]->Name }} 車輛清單</h6>
             <a href="" class="col-md-2 text-right">新增車輛</a>
         </div>
         <div class="card-body p-1">
