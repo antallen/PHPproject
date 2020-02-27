@@ -23,8 +23,13 @@ class CarController extends Controller
         }
         
     }
+    
     //新增車輛的表格
     public function new(Request $request){
         return View::make('carnew',['Cusid'=>$request->Cusid]);
+    }
+    //儲存客戶車輛資料
+    public function store(Request $request){
+        dd($request);
     }
 }
