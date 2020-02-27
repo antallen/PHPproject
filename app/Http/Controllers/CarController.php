@@ -30,7 +30,18 @@ class CarController extends Controller
     }
     //儲存客戶車輛資料
     public function store(Request $request){
-        $car=$request->only('Cusid','Carno','CarStyleid');
-        dd($car);
+        if ($request->cancel){
+            $customer = Customer::where('Cusid',$request->Cusid)->get();
+            $cars = Car::where('Cusid',$request->Cusid)->get();
+            return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+        }
+        $car = new Car;
+        $car->Carno=$request->input('Carno');
+        $car->Cusid=$request->input('Cusid');
+        $car->CarStyleid=$request->input('CarStyleid');
+        $car->save();
+        $customer = Customer::where('Cusid',$request->Cusid)->get();
+        $cars = Car::where('Cusid',$request->Cusid)->get();
+        return View::make('car',['customer'=>$customer,'cars'=>$cars]);
     }
 }
