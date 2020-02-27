@@ -5,8 +5,8 @@
     <div class="col-md-10">
     <div class="card">
         <div class="card-header">
-            <h6 class="card-title col-md-8 text-left">客戶: {{ $customer[0]->Name }} 車輛清單</h6>
-            <a href="" class="card-title col-md-2 text-right">新增車輛</a>
+            <h6 class="card-title col-md-8 text-left">客戶: {{ $customer[0]->Name }} 車輛清單
+            <a href="" class="card-title col-md-2 text-right">新增車輛</a></h6>
         </div>
         <div class="card-body p-1">
             <table class="table table-hover m-0">
