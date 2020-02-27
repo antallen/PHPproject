@@ -21,9 +21,13 @@
                     foreach ($cars as $car){
                 ?>
                     <tr>
-                        <td><?php echo $car->Carno; ?></td>
-                        <td><?php echo $car->CarStyleid; ?></td>
-                    <td></td>
+                        <td>{{ $car->Carno }}</td>
+                        <td>{{ $car->CarStyleid }}</td>
+                    <td><a href="{{ action('CarController@edit', 
+                                    ['Cusid'=>$customer[0]->Cusid,
+                                    'Carno'=>$car->Carno,
+                                    'CarStyleid'=>$car->CarStyleid]) }}" class="btn btn-success btn-sm">編輯</a>
+                    <a href="{{ action('CarController@delete', ['Carno'=>$car->Carno]) }}" class="btn btn-danger btn-sm">刪除</a></td>
                     </tr>
                     <?php }  ?>
                 </tbody>

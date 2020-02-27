@@ -25,3 +25,6 @@ Route::get('delete','CustomerController@delete');
 Route::get('car','CarController@index');
 Route::get('carnew','CarController@new');
 Route::post('carstore','CarController@store');
+Route::get('caredit','CarController@edit');
+Route::post('carupdate','CustomerController@update');
+Route::get('cardelete','CarController@delete');
