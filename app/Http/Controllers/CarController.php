@@ -19,8 +19,12 @@ class CarController extends Controller
             
         } else {
             $customers = Customer::all();
-            return View::make('board',['customers' => $customers]); 
+            return View::make('board',['customers'=>$customers]); 
         }
         
-      }
+    }
+    //新增車輛的表格
+    public function new(Request $request){
+        return View::make('carnew',['Cusid'=>$request->Cusid]);
+    }
 }
