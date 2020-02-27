@@ -31,6 +31,7 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-9">
                     <input type="hidden" id="Cusid" name="Cusid" value="{{ $Cusid }}">
+                    <input type="hidden" id="oldCarno" name="oldCarno" value="{{ $Cusno }}">
                     <input type="submit" class="btn btn-primary" value="送出">
                 </div>
                 <div class="col-sm-1">

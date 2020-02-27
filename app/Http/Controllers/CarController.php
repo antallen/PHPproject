@@ -55,6 +55,12 @@ class CarController extends Controller
             $cars = Car::where('Cusid',$request->Cusid)->get();
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
         }
+        $car = Car::where('Carno',$request->input('oldCarno'))
+                          ->update(['Carno'=>$request->input('Carno'),
+                          'CarStyleid'=>$request->input('CarStyleid')]);
+        $customer = Customer::where('Cusid',$request->Cusid)->get();
+        $cars = Car::where('Cusid',$request->Cusid)->get();
+        return View::make('car',['customer'=>$customer,'cars'=>$cars]);
     }
     //刪除客戶車輛資料
     public function delete(Request $request){
