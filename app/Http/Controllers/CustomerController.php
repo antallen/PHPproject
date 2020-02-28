@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Request\EditCustomer;
 use Illuminate\Http\Request;
 use Route;
 use View;
@@ -45,7 +46,7 @@ class CustomerController extends Controller
     }
 
     //更新客戶資料
-    public function update(Request $request){
+    public function update(EditCustomer $request){
         if ($request->cancel){
             $customers = Customer::all();
             return View::make('board',['customers' => $customers]);
@@ -57,7 +58,7 @@ class CustomerController extends Controller
                                     'Phone'=> $request->input('Phone')
         ]);
         $customers = Customer::all();
-        return View::make('board',['customers' => $customers]); 
+        return View::make('board',['customers' => $customers,'msg' => '修改成功']); 
     }
 
     //刪除客戶資料
