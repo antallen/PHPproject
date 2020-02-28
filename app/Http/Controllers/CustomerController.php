@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Request\EditCustomer;
+use App\Http\Requests\EditCustomer;
 use Illuminate\Http\Request;
 use Route;
 use View;
