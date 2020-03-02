@@ -28,14 +28,6 @@ Route::post('carstore','CarController@store');
 Route::get('caredit','CarController@edit');
 Route::post('carupdate','CarController@update');
 Route::get('cardelete','CarController@delete');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
