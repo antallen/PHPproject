@@ -30,7 +30,7 @@ Route::post('carupdate','CarController@update');
 Route::get('cardelete','CarController@delete');
 
 //預設驗證功能
-Auth::routes();
+//Auth::routes();
 //啟用 Email 驗證功能
 Auth::routes(['verify'=>true]);
 //取消註冊功能
