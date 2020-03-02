@@ -29,6 +29,10 @@ Route::get('caredit','CarController@edit');
 Route::post('carupdate','CarController@update');
 Route::get('cardelete','CarController@delete');
 
+//預設驗證功能
+Auth::routes();
 //啟用 Email 驗證功能
 Auth::routes(['verify'=>true]);
+//取消註冊功能
+Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
