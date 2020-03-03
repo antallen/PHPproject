@@ -16,19 +16,20 @@ Route::get('/', function () {
 });
 
 //Route::resource('customer', 'CustomerController');
+Route::middleware('auth')->group(function(){
+    Route::get('new','CustomerController@new');
+    Route::post('store','CustomerController@store');
+    Route::get('edit','CustomerController@edit');
+    Route::post('update','CustomerController@update');
+    Route::get('delete','CustomerController@delete');
+    Route::get('carnew','CarController@new');
+    Route::post('carstore','CarController@store');
+    Route::get('caredit','CarController@edit');
+    Route::post('carupdate','CarController@update');
+    Route::get('cardelete','CarController@delete');
+});
 Route::get('customer','CustomerController@index');
-Route::get('new','CustomerController@new');
-Route::post('store','CustomerController@store');
-Route::get('edit','CustomerController@edit');
-Route::post('update','CustomerController@update');
-Route::get('delete','CustomerController@delete');
 Route::get('car','CarController@index');
-Route::get('carnew','CarController@new');
-Route::post('carstore','CarController@store');
-Route::get('caredit','CarController@edit');
-Route::post('carupdate','CarController@update');
-Route::get('cardelete','CarController@delete');
-
 //預設驗證功能
 Auth::routes();
 //啟用 Email 驗證功能
