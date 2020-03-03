@@ -31,9 +31,9 @@ Route::middleware('auth')->group(function(){
 Route::get('customer','CustomerController@index');
 Route::get('car','CarController@index');
 //預設驗證功能
-Auth::routes();
+//Auth::routes();
 //啟用 Email 驗證功能
 //Auth::routes(['verify'=>true]);
 //取消註冊功能
-//Auth::routes(['register' => false]);
+Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
