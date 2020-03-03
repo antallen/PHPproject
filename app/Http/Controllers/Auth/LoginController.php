@@ -37,4 +37,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    //覆寫 AuthenticatiesUsers 中的 username() 方法
+    public function username()
+    {
+        return 'loginname';
+    }
 }
