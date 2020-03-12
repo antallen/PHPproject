@@ -7,7 +7,7 @@ use Route;
 use View;
 use App\Customer;
 use App\Car;
-use App\Repositories\CarRespository;
+use App\Repositories\CarRepository;
 
 class CarController extends Controller
 {
