@@ -1,0 +1,19 @@
+<?php
+namespace App\Repositories;
+
+use App\Customer;
+
+class CustomerRepository{
+
+    protected $customers;
+    /*
+    *    creae install for Model
+    */
+    public function __construct(Customer $custoers){
+        $this->customers = $customers;
+    }
+    // 取得 customers 資料的方法
+    public function getCustomer(Request $request){
+        return $this->customers->all();
+    }
+}

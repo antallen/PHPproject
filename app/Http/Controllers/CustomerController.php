@@ -7,13 +7,20 @@ use Illuminate\Http\Request;
 use Route;
 use View;
 use App\Customer;
+use App\Repositories\CustomerRepository;
 
 class CustomerController extends Controller
 {
+    protected $customers;
+    public function __construct(CustomerRepository $customers){
+        $this->customers = $customers;
+    }
     //客戶列表
     public function index() {
-        $customers = Customer::all();
-        return View::make('board',['customers' => $customers]);
+        //$customers = Customer::all();
+        $list = $this->customers->getCustomer();
+        return View::make('board',['customers' => $list]);
+        //return View::make('board',['customers' => $customers]);
     }
 
     //新增客戶資料
