@@ -18,7 +18,7 @@ class CustomerController extends Controller
     //客戶列表
     public function index() {
         //$customers = Customer::all();
-        $list = $this->customers->getCustomer();
+        $list = $this->customers->getAllCustomer();
         return View::make('board',['customers' => $list]);
         //return View::make('board',['customers' => $customers]);
     }

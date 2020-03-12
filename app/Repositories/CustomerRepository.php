@@ -13,7 +13,7 @@ class CustomerRepository{
         $this->customers = $customers;
     }
     // 取得 customers 資料的方法
-    public function getCustomer(Request $request){
+    public function getAllCustomer(){
         return $this->customers->all();
     }
 }
