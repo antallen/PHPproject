@@ -8,8 +8,9 @@ class CarRepository
     /*
     *    creae install for Model
     */
-    public function __construct(Car $cars){
+    public function __construct(Car $cars, Request $request){
         $this->cars = $cars;
+        $this->request = $request;
     }
     //取得該車主所有車輛資料的方法
     public function getAllCar(Request $request){
