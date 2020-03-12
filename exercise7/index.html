@@ -227,6 +227,7 @@
     <span class="hljs-keyword">if</span> (<span class="hljs-variable">$request</span>-&gt;has(<span class="hljs-string">'Cusid'</span>)){
       <span class="hljs-variable">$customer</span> = Customer::where(<span class="hljs-string">'Cusid'</span>,<span class="hljs-variable">$request</span>-&gt;Cusid)-&gt;get();
       <span class="hljs-variable">$list</span> = <span class="hljs-variable">$this</span>-&gt;cars-&gt;getAllCar(<span class="hljs-variable">$request</span>-&gt;Cusid);
+      <span class="hljs-keyword">return</span> View::make(<span class="hljs-string">'car'</span>,[<span class="hljs-string">'customer'</span>=&gt;<span class="hljs-variable">$customer</span>,<span class="hljs-string">'cars'</span>=&gt;<span class="hljs-variable">$list</span>]);
     } <span class="hljs-keyword">else</span> {
       <span class="hljs-comment">//以下略過</span></code></pre>
 </li>

@@ -219,6 +219,7 @@
         if ($request->has('Cusid')){
           $customer = Customer::where('Cusid',$request->Cusid)->get();
           $list = $this->cars->getAllCar($request->Cusid);
+          return View::make('car',['customer'=>$customer,'cars'=>$list]);
         } else {
           //以下略過
     ```
