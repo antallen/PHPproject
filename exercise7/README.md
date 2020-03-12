@@ -185,6 +185,7 @@
     ```php
     <?php
     namespace App\Repositories;
+    use Illuminate\Http\Request;
     use App\Car;
     class CarRepository
     {
@@ -196,8 +197,8 @@
             $this->cars = $cars;
         }
         //取得該車主所有車輛資料的方法
-        public function getAllCar(Request $request){
-            return $this->car->where('Cusid',$request->Cusid)->get();
+        public function getAllCar($cusid){
+            return $this->cars->where('Cusid',$cusid)->get();
         }
     }
     ```
@@ -205,7 +206,7 @@
   + 編修 app/Http/Controllers/CarController.php
     ```php
     // 引入 CarRepository
-    use App\Repositories\CarRespository;
+    use App\Repositories\CarRepository;
     // 中間略過
     class CarController extends Controller
     {
@@ -216,6 +217,7 @@
       //修改下列function
       public function index(Request $request) {
         if ($request->has('Cusid')){
+          $customer = Customer::where('Cusid',$request->Cusid)->get();
           $list = $this->cars->getAllCar($request->Cusid);
         } else {
           //以下略過
