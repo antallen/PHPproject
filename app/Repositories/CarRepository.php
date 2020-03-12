@@ -5,6 +5,7 @@ use App\Car;
 class CarRepository
 {
     protected $cars;
+    protected $request;
     /*
     *    creae install for Model
     */
