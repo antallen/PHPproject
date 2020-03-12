@@ -5,16 +5,14 @@ use App\Car;
 class CarRepository
 {
     protected $cars;
-    protected $request;
     /*
     *    creae install for Model
     */
-    public function __construct(Car $cars, Request $request){
+    public function __construct(Car $cars){
         $this->cars = $cars;
-        $this->request = $request;
     }
     //取得該車主所有車輛資料的方法
-    public function getAllCar(Request $request){
-        return $this->car->where('Cusid',$request->Cusid)->get();
+    public function getAllCar($cusid){
+        return $this->car->where('Cusid',$cusid)->get();
     }
 }
