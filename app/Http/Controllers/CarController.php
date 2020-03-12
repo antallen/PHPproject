@@ -12,7 +12,6 @@ use App\Repositories\CarRepository;
 class CarController extends Controller
 {
     protected $cars;
-    protected $customers;
     public function __construct(CarRepository $cars){
         $this->cars = $cars;
     }
