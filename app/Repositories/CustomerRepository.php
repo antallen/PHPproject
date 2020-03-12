@@ -9,7 +9,7 @@ class CustomerRepository{
     /*
     *    creae install for Model
     */
-    public function __construct(Customer $custoers){
+    public function __construct(Customer $customers){
         $this->customers = $customers;
     }
     // 取得 customers 資料的方法
