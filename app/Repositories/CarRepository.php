@@ -13,6 +13,6 @@ class CarRepository
     }
     //取得該車主所有車輛資料的方法
     public function getAllCar($cusid){
-        return $this->car->where('Cusid',$cusid)->get();
+        return $this->cars->where('Cusid',$cusid)->get();
     }
 }
