@@ -29,7 +29,6 @@ class CarController extends Controller
             $customers = Customer::all();
             return View::make('board',['customers'=>$customers]); 
         }
-        
     }
     
     //新增車輛的表格

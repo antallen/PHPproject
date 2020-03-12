@@ -137,7 +137,7 @@
   + 修改 app/Http/Controllers/CustomerController.php
     ```php
     // 引入 CustomerRepository
-    use App\Repositories;
+    use App\Repositories\CustomerRespository;
     // 中間略過
 
     //修改下列function
@@ -156,7 +156,84 @@
   + 在正式環境中，取得 github 上的檔案
   + 利用瀏覽器查看客戶列表是否正常！
 
-+ 針對 Car 模組，增加 CarRepository 
++ 針對 Car 模組，增加 CarRepository
+  + 使用 artisan
+    ```bash
+    $ php artisan make:repository CarRepository
+    ```
+  + 查看 app/Car.php
+    ```php
+    <?php
+    namespace App;
+    use Illuminate\Database\Eloquent\Model;
+    use App\Customer;
+
+    class Car extends Model
+    {
+        //定義相關連結表格
+        protected $table = 'cars';
+        protected $primarykey = 'Carno';
+        public $timestamps = true;
+
+        //取得該輛車的車主ＩＤ
+        public function customers(){  
+            return $this->belongsTo(Customer::class,'Cusid');
+        }
+    }
+    ```
+  + 編修 app/Repositories/CarRepository.php
+    ```php
+    <?php
+    namespace App\Repositories;
+    use App\Car;
+    class CarRepository
+    {
+        protected $cars;
+        /*
+        *    creae install for Model
+        */
+        public function __construct(Car $cars){
+            $this->cars = $cars;
+        }
+        //取得該車主所有車輛資料的方法
+        public function getAllCar(Request $request){
+            return $this->car->where('Cusid',$request->Cusid)->get();
+        }
+    }
+    ```
++ 修改 CarController ，使用 CarRepository 取得車輛資料
+  + 編修 app/Http/Controllers/CarController.php
+    ```php
+    // 引入 CarRepository
+    use App\Repositories\CarRespository;
+    // 中間略過
+    class CarController extends Controller
+    {
+      protected $cars;
+      public function __construct(CarRepository $cars){
+          $this->cars = $cars;
+      }
+      //修改下列function
+      public function index(Request $request) {
+        if ($request->has('Cusid')){
+          $list = $this->cars->getAllCar($request->Cusid);
+        } else {
+          //以下略過
+    ```
+  + 將資料 git 上 github
+  + 在正式環境中，取得 github 上的檔案
+  + 利用瀏覽器查看客戶的車輛列表是否正常！
+
+##### 練習時間
++ 將 CustomerController 裡面的 SQL 語法，逐一修至 CustomerRepository 內！
++ 將 CarController 裡面的 SQL 語法，逐一修至 CarRepository 內！
+
+##### 心法註記
++ 讓 Eloquent Model 只處理對應資料表的連結與資料表間的關係
++ 讓 Controller 只處理控制流程的工作
++ 讓 Repository 只處理 SQL 的工作
++ 此實作方式即為 DI(Dependency injection, 依賴注入)
+
 ##### 參考文獻
 [laravel 自定義artisan命令](https://www.itread01.com/content/1545264185.html)
 [佛祖球球－Repository Pattern and Service Layer](https://blog.johnsonlu.org/repository-pattern-and-service-layer/)
