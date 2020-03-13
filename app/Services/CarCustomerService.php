@@ -20,7 +20,7 @@ class CarCustomerService
     //取得特定車主與車輛資料
     public function getCars($Cusid){
         return [
-            'customer' => $this->customers->getOneCustomer($cusid),
+            'customer' => $this->customers->getOneCustomer($Cusid),
             'cars' => $this->cars->getAllCar($cusid)
         ];
     }
