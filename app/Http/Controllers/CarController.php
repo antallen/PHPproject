@@ -29,9 +29,7 @@ class CarController extends Controller
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
             */
 
-            $listAll=$this->CarCustomerService->getCars($request->Cusid);
-            $customer = $listAll->customer;
-            $list = $listAll->cars;
+            $list=$this->CarCustomerService->getCars($request->Cusid);
             dd($list);
             //$list = $this->cars->getAllCar($request->Cusid);
             //return View::make('car',['customer'=>$customer,'cars'=>$list]);
