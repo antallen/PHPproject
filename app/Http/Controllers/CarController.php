@@ -7,24 +7,32 @@ use Route;
 use View;
 use App\Customer;
 use App\Car;
-use App\Repositories\CarRepository;
+//use App\Repositories\CarRepository;
+use App\Services\CarCustomerService;
 
 class CarController extends Controller
 {
-    protected $cars;
-    public function __construct(CarRepository $cars){
-        $this->cars = $cars;
+    //protected $cars;
+    protected $CarCustomerService;
+
+    //public function __construct(CarRepository $cars){
+    public function __construct(CarCustomerService $CarCustomerService){
+        //$this->cars = $cars;
+        $this->CarCustomerService = $CarCustomerService;
     }
     //顯示車主所擁有的車輛
     public function index(Request $request) {
         if ($request->has('Cusid')){
-            $customer = Customer::where('Cusid',$request->Cusid)->get();
+            //$customer = Customer::where('Cusid',$request->Cusid)->get();
             /*
             $cars = Car::where('Cusid',$request->Cusid)->get();
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
             */
-            $list = $this->cars->getAllCar($request->Cusid);
-            return View::make('car',['customer'=>$customer,'cars'=>$list]);
+
+            $list=$this->CarCustomerService->getCars($request->Cusid);
+            dd($list);
+            //$list = $this->cars->getAllCar($request->Cusid);
+            //return View::make('car',['customer'=>$customer,'cars'=>$list]);
         } else {
             $customers = Customer::all();
             return View::make('board',['customers'=>$customers]); 

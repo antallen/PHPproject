@@ -1,0 +1,11 @@
+<?php
+namespace DummyNamespace;
+class DummyClass
+{
+    /*
+    *    creae install for Model
+    */
+    public function __construct ()
+    {
+    }
+}

@@ -16,4 +16,10 @@ class CustomerRepository{
     public function getAllCustomer(){
         return $this->customers->all();
     }
+    // 取得特定客戶資料的方法
+    public function getOneCustomer($cusid){
+        return $this->customers
+                    ->where('Cusid','=',$cusid)
+                    ->get();
+    }
 }

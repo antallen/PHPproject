@@ -6,3 +6,4 @@
 #### 綜合練習(五) [內容](exercise5/README.md)
 #### 綜合練習(六) [內容](exercise6/README.md)
 #### 綜合練習(七) [內容](exercise7/README.md)
+#### 綜合練習(八) [內容](exercise8/README.md)

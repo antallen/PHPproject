@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //建立產生 repository 的命令
-        commands\RepositoryMakeCommand::Class
+        commands\RepositoryMakeCommand::Class,
+        commands\ServiceMakeCommand::Class
     ];
 
     /**
