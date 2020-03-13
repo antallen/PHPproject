@@ -21,7 +21,7 @@ class CarCustomerService
     public function getCars($Cusid){
         return [
             'customer' => $this->customers->getOneCustomer($Cusid),
-            'cars' => $this->cars->getAllCar($cusid)
+            'cars' => $this->cars->getAllCar($Cusid)
         ];
     }
 }
