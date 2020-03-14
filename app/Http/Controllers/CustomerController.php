@@ -46,7 +46,7 @@ class CustomerController extends Controller
         if (!($request->cancel)){
             $this->CarCustomerService->updateCustomers($request);
             //return View::make('board',['customers' => $customers,'msg' => '修改成功']); 
-            return redirect()->action('CustomerController@index',['customers' => $customers,'msg' => '修改成功']);
+            return redirect()->action('CustomerController@index',['customers' => $request->Name,'msg' => '修改成功']);
         } else {
             return redirect('customer');
         }
