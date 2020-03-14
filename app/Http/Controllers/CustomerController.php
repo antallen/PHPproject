@@ -6,8 +6,6 @@ use App\Http\Requests\EditCustomer;
 use Illuminate\Http\Request;
 use Route;
 use View;
-//use App\Customer;
-//use App\Repositories\CustomerRepository;
 use App\Services\CarCustomerService;
 
 class CustomerController extends Controller
