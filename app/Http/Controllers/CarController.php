@@ -28,7 +28,6 @@ class CarController extends Controller
             $cars=$list['cars'];
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
         } else {
-            //$customers = Customer::all();
             $customers = $this->CarCustomerService->getCustomers();
             return View::make('board',['customers'=>$customers]); 
         }
@@ -41,10 +40,6 @@ class CarController extends Controller
     //儲存客戶車輛資料
     public function store(Request $request){
         if ($request->cancel){
-            /*
-            $customer = Customer::where('Cusid',$request->Cusid)->get();
-            $cars = Car::where('Cusid',$request->Cusid)->get();
-            */
             $list=$this->CarCustomerService->getCars($request->Cusid);
             $customer=$list['customer'];
             $cars=$list['cars'];
@@ -66,10 +61,6 @@ class CarController extends Controller
     //更新客戶車輛資料
     public function update(Request $request){
         if ($request->cancel){
-            /*
-            $customer = Customer::where('Cusid',$request->Cusid)->get();
-            $cars = Car::where('Cusid',$request->Cusid)->get();
-            */
             $list=$this->CarCustomerService->getCars($request->Cusid);
             $customer=$list['customer'];
             $cars=$list['cars'];
