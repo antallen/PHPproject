@@ -35,4 +35,10 @@ class CarCustomerService
         $result=$this->cars->createCar($carData);
         return $result;
     }
+
+    //更新客戶的車輛資料
+    public function updateCars($carData){
+        $result=$this->cars->updateCar($carData);
+        return $result;
+    }
 }

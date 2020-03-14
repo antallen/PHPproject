@@ -25,4 +25,12 @@ class CarRepository
         $car->save();
         return $carData->Cusid;
     }
+
+    //更新車輛資料
+    public function updateCar(Request $carData){
+        $car = Car::where('Carno',$carData->oldCarno)
+                          ->update(['Carno'=>$carData->Carno,
+                                    'CarStyleid'=>$carData->CarStyleid]);
+        return $carData->Cusid;
+    }
 }
