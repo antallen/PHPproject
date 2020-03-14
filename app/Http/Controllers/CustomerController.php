@@ -32,8 +32,10 @@ class CustomerController extends Controller
     public function store(Request $request){
         if (!($request->cancel)){
             $this->CarCustomerService->newCustomers($request);
+            return redirect()->action('CustomerController@index',['customers' => $request->Name,'msg' => '新增成功']);
+        } else {
+            return redirect('customer');
         }
-        return redirect('customer');
     }
 
     //修改客戶資料表格
