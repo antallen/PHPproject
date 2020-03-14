@@ -35,7 +35,7 @@ class CarRepository
     }
 
     //刪除車輛資料
-    public function deleteCars(Request $carData){
+    public function deleteCar(Request $carData){
         Car::where('Carno',$carData->Carno)->delete();
         return $carData->Cusno;
     }
