@@ -45,6 +45,8 @@ class CarController extends Controller
             $cars=$list['cars'];
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
         }
+        $this->CarCustomerService->newCars($request);
+        /*
         $car = new Car;
         $car->Carno=$request->input('Carno');
         $car->Cusid=$request->input('Cusid');
@@ -53,6 +55,7 @@ class CarController extends Controller
         $customer = Customer::where('Cusid',$request->Cusid)->get();
         $cars = Car::where('Cusid',$request->Cusid)->get();
         return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+        */
     }
     //編輯客戶車輛程式
     public function edit(Request $request){
