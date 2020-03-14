@@ -45,7 +45,8 @@ class CarController extends Controller
         $list=$this->CarCustomerService->getCars($request->Cusid);
         $customer=$list['customer'];
         $cars=$list['cars'];
-        return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+        return redirect()->action('CarController@index',['customer'=>$customer,'cars'=>$cars]);
+        //return View::make('car',['customer'=>$customer,'cars'=>$cars]);
     }
     //編輯客戶車輛程式
     public function edit(Request $request){
