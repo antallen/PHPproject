@@ -28,14 +28,16 @@ class CarController extends Controller
             $cars = Car::where('Cusid',$request->Cusid)->get();
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
             */
-
+            $this->returnCarList($request->Cusid);
+            /*
             $list=$this->CarCustomerService->getCars($request->Cusid);
             $customer=$list['customer'];
             $cars=$list['cars'];
+            */
             //dd($cars);
             //$list = $this->cars->getAllCar($request->Cusid);
             //return View::make('car',['customer'=>$customer,'cars'=>$list]);
-            return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+            //return View::make('car',['customer'=>$customer,'cars'=>$cars]);
         } else {
             //$customers = Customer::all();
             $customers = $this->CarCustomerService->getCustomers();
@@ -75,8 +77,13 @@ class CarController extends Controller
     //更新客戶車輛資料
     public function update(Request $request){
         if ($request->cancel){
+            /*
             $customer = Customer::where('Cusid',$request->Cusid)->get();
             $cars = Car::where('Cusid',$request->Cusid)->get();
+            */
+            $list=$this->CarCustomerService->getCars($request->Cusid);
+            $customer=$list['customer'];
+            $cars=$list['cars'];
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
         }
         $car = Car::where('Carno',$request->input('oldCarno'))
@@ -91,6 +98,14 @@ class CarController extends Controller
         Car::where('Carno',$request->input('Carno'))->delete();
         $customer = Customer::where('Cusid',$request->Cusid)->get();
         $cars = Car::where('Cusid',$request->Cusid)->get();
+        return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+    }
+
+    //返回客戶車輛列表
+    public function returnCarList($Cusid){
+        $list=$this->CarCustomerService->getCars($Cusid);
+        $customer=$list['customer'];
+        $cars=$list['cars'];
         return View::make('car',['customer'=>$customer,'cars'=>$cars]);
     }
 }
