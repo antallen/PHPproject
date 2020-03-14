@@ -39,27 +39,13 @@ class CarController extends Controller
     }
     //儲存客戶車輛資料
     public function store(Request $request){
-        if ($request->cancel){
-            $list=$this->CarCustomerService->getCars($request->Cusid);
-            $customer=$list['customer'];
-            $cars=$list['cars'];
-            return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+        if (!($request->cancel)){
+            $this->CarCustomerService->newCars($request);
         }
-        $this->CarCustomerService->newCars($request);
         $list=$this->CarCustomerService->getCars($request->Cusid);
         $customer=$list['customer'];
         $cars=$list['cars'];
         return View::make('car',['customer'=>$customer,'cars'=>$cars]);
-        /*
-        $car = new Car;
-        $car->Carno=$request->input('Carno');
-        $car->Cusid=$request->input('Cusid');
-        $car->CarStyleid=$request->input('CarStyleid');
-        $car->save();
-        $customer = Customer::where('Cusid',$request->Cusid)->get();
-        $cars = Car::where('Cusid',$request->Cusid)->get();
-        return View::make('car',['customer'=>$customer,'cars'=>$cars]);
-        */
     }
     //編輯客戶車輛程式
     public function edit(Request $request){
