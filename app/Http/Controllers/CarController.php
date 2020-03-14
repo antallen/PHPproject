@@ -37,7 +37,8 @@ class CarController extends Controller
             //return View::make('car',['customer'=>$customer,'cars'=>$list]);
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
         } else {
-            $customers = Customer::all();
+            //$customers = Customer::all();
+            $customers = $this->CarCustomerService->getCustomers();
             return View::make('board',['customers'=>$customers]); 
         }
     }
