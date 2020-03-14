@@ -33,4 +33,14 @@ class CustomerRepository{
         $customers->save();
         return $customerData->Cusid;
     }
+
+    // 更新客戶資料的方法
+    public function updateCustomer($customerData){
+        $customers = Customer::where('Cusid',$customerData->oldId)
+                                    ->update(['Cusid'=> $customerData->Cusid,
+                                    'Name'=> $customerData->Name,
+                                    'Address'=> $customerData->Address,
+                                    'Phone'=> $customerData->Phone]);
+        return $customerData->Cusid;
+    }
 }

@@ -28,6 +28,11 @@ class CarCustomerService
         return $result;
     }
 
+    //更新車主資料
+    public function updateCustomers($customerData){
+        $result=$this->customers->updateCustomer($customerData);
+        return $result;
+    }
 
     //取得特定車主與車輛資料
     public function getCars($Cusid){

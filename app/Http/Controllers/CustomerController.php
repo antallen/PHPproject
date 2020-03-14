@@ -38,25 +38,18 @@ class CustomerController extends Controller
 
     //修改客戶資料表格
     public function edit(Request $request){
-        //$customers=$request->Cusid;
-        //dd($customers);
         return View::make('edit',['Cusid'=>$request->Cusid,'Name'=>$request->Name,'Address'=>$request->Address,'Phone'=>$request->Phone]);
     }
 
     //更新客戶資料
     public function update(EditCustomer $request){
-        if ($request->cancel){
-            $customers = Customer::all();
-            return View::make('board',['customers' => $customers]);
-        } 
-        $customers = Customer::where('Cusid',$request->input('oldId'))
-                                    ->update(['Cusid'=> $request->input('Cusid'),
-                                    'Name'=> $request->input('Name'),
-                                    'Address'=> $request->input('Address'),
-                                    'Phone'=> $request->input('Phone')
-        ]);
-        $customers = Customer::all();
-        return View::make('board',['customers' => $customers,'msg' => '修改成功']); 
+        if (!($request->cancel)){
+            $this->CarCustomerService->updateCustomers($request);
+            //return View::make('board',['customers' => $customers,'msg' => '修改成功']); 
+            return redirect()->action('CustomerController@index',['customers' => $customers,'msg' => '修改成功']);
+        } else {
+            return redirect('customer');
+        }
     }
 
     //刪除客戶資料
