@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories;
-
+use Illuminate\Http\Request;
 use App\Customer;
 
 class CustomerRepository{
@@ -21,5 +21,16 @@ class CustomerRepository{
         return $this->customers
                     ->where('Cusid','=',$cusid)
                     ->get();
+    }
+
+    // 新增客戶資料的方法
+    public function newCustomer(Request $customerData){
+        $customers = new Customer;
+        $customers->Cusid=$customerData->Cusid;
+        $customers->Name=$customerData->Name;
+        $customers->Address=$customerData->Address;
+        $customers->Phone=$customerData->Phone;
+        $customers->save();
+        return $customerData->Cusid;
     }
 }
