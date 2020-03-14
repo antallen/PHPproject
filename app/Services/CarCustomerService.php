@@ -32,6 +32,6 @@ class CarCustomerService
 
     //新增客戶的車輛資料
     public function newCars($carData){
-        dd($carData);
+        $this->cars->createCar($carData);
     }
 }

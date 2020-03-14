@@ -15,4 +15,8 @@ class CarRepository
     public function getAllCar($cusid){
         return $this->cars->where('Cusid',$cusid)->get();
     }
+    //建立車輛資料
+    public function createCar(Request $carData){
+        dd($carData->Carno);
+    }
 }
