@@ -17,6 +17,6 @@ class CarRepository
     }
     //建立車輛資料
     public function createCar(Request $carData){
-        dd($carData->Carno);
+        dd($carData->Carno,$carData->Cusid);
     }
 }
