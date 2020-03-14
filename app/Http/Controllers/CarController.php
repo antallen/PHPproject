@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Route;
 use View;
-use App\Customer;
-use App\Car;
+//use App\Customer;
+//use App\Car;
 //use App\Repositories\CarRepository;
 use App\Services\CarCustomerService;
 
