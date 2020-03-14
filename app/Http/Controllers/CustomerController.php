@@ -8,19 +8,19 @@ use Route;
 use View;
 use App\Customer;
 use App\Repositories\CustomerRepository;
+use App\Services\CarCustomerService;
 
 class CustomerController extends Controller
 {
-    protected $customers;
-    public function __construct(CustomerRepository $customers){
-        $this->customers = $customers;
+    protected $CarCustomerService;
+    public function __construct(CarCustomerService $CarCustomerService){
+        $this->CarCustomerService = $CarCustomerService;
     }
+
     //客戶列表
     public function index() {
-        //$customers = Customer::all();
-        $list = $this->customers->getAllCustomer();
+        $list = $this->CarCustomerService->getCustomers();
         return View::make('board',['customers' => $list]);
-        //return View::make('board',['customers' => $customers]);
     }
 
     //新增客戶資料
