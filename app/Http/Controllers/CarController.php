@@ -52,14 +52,6 @@ class CarController extends Controller
     public function update(Request $request){
         if (!($request->cancel)){
             $this->CarCustomerService->updateCars($request);
-            /*
-            $car = Car::where('Carno',$request->input('oldCarno'))
-                          ->update(['Carno'=>$request->input('Carno'),
-                          'CarStyleid'=>$request->input('CarStyleid')]);
-            $customer = Customer::where('Cusid',$request->Cusid)->get();
-            $cars = Car::where('Cusid',$request->Cusid)->get();
-            return View::make('car',['customer'=>$customer,'cars'=>$cars]);
-            */
         }
         return redirect()->action('CarController@index',['Cusid' => $request->Cusid]);
     }
