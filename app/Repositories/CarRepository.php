@@ -23,7 +23,7 @@ class CarRepository
         $car->Cusid=$carData->Cusid;
         $car->CarStyleid=$carData->CarStyleid;
         $car->save();
-        return $carData->Cusid;
+        return $carData->Cusno;
     }
 
     //更新車輛資料
@@ -31,6 +31,12 @@ class CarRepository
         $car = Car::where('Carno',$carData->oldCarno)
                           ->update(['Carno'=>$carData->Carno,
                                     'CarStyleid'=>$carData->CarStyleid]);
-        return $carData->Cusid;
+        return $carData->Cusno;
+    }
+
+    //刪除車輛資料
+    public function deleteCars(Request $carData){
+        Car::where('Carno',$carData->Carno)->delete();
+        return $carData->Cusno;
     }
 }

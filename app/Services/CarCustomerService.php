@@ -41,4 +41,10 @@ class CarCustomerService
         $result=$this->cars->updateCar($carData);
         return $result;
     }
+
+    //刪除客戶的車輛資料
+    public function deleteCars($carData){
+        $result=$this->cars->deleteCar($carData);
+        return $result;
+    }
 }

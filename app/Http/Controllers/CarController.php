@@ -57,9 +57,7 @@ class CarController extends Controller
     }
     //刪除客戶車輛資料
     public function delete(Request $request){
-        Car::where('Carno',$request->input('Carno'))->delete();
-        $customer = Customer::where('Cusid',$request->Cusid)->get();
-        $cars = Car::where('Cusid',$request->Cusid)->get();
-        return View::make('car',['customer'=>$customer,'cars'=>$cars]);
+        $this->CarCustomerService->deleteCars($request);
+        return redirect()->action('CarController@index',['Cusid' => $request->Cusid]);
     }
 }
