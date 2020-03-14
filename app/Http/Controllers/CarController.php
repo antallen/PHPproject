@@ -42,9 +42,11 @@ class CarController extends Controller
         if (!($request->cancel)){
             $this->CarCustomerService->newCars($request);
         }
+        /*
         $list=$this->CarCustomerService->getCars($request->Cusid);
         $customer=$list['customer'];
         $cars=$list['cars'];
+        */
         //return View::make('car',['customer'=>$customer,'cars'=>$cars]);
         return redirect()->action('CarController@index',['Cusid' => $request->Cusid]);
     }
