@@ -28,7 +28,7 @@ class CarController extends Controller
             $cars = Car::where('Cusid',$request->Cusid)->get();
             return View::make('car',['customer'=>$customer,'cars'=>$cars]);
             */
-            $this->returnCarList($request->Cusid);
+            returnCarList($request->Cusid);
             /*
             $list=$this->CarCustomerService->getCars($request->Cusid);
             $customer=$list['customer'];
