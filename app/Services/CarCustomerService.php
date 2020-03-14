@@ -34,6 +34,12 @@ class CarCustomerService
         return $result;
     }
 
+    //刪除車主資料
+    public function deleteCustomers($customerData){
+        $result=$this->customers->deleteCustomer($customerData);
+        return $result;
+    }
+
     //取得特定車主與車輛資料
     public function getCars($Cusid){
         return [

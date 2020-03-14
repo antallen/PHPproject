@@ -44,8 +44,7 @@ class CustomerController extends Controller
     //更新客戶資料
     public function update(EditCustomer $request){
         if (!($request->cancel)){
-            $this->CarCustomerService->updateCustomers($request);
-            //return View::make('board',['customers' => $customers,'msg' => '修改成功']); 
+            $result=$this->CarCustomerService->updateCustomers($request);
             return redirect()->action('CustomerController@index',['customers' => $request->Name,'msg' => '修改成功']);
         } else {
             return redirect('customer');
@@ -54,8 +53,7 @@ class CustomerController extends Controller
 
     //刪除客戶資料
     public function delete(Request $request){
-        Customer::where('Cusid',$request->input('Cusid'))->delete();
-        $customers = Customer::all();
-        return View::make('board',['customers' => $customers]); 
+        $result=$this->CarCustomerService->deleteCustomers($request);
+        return redirect()->action('CustomerController@index',['customers' => $request->Name,'msg' => '刪除成功']);
     }
 }

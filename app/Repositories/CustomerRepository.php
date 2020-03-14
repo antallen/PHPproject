@@ -35,12 +35,18 @@ class CustomerRepository{
     }
 
     // 更新客戶資料的方法
-    public function updateCustomer($customerData){
+    public function updateCustomer(Request $customerData){
         $customers = Customer::where('Cusid',$customerData->oldId)
                                     ->update(['Cusid'=> $customerData->Cusid,
                                     'Name'=> $customerData->Name,
                                     'Address'=> $customerData->Address,
                                     'Phone'=> $customerData->Phone]);
         return $customerData->Cusid;
+    }
+
+    //刪除客戶資料的方法
+    public function deleteCustomer(Request $customerData){
+        Customer::where('Cusid',$customerData->Cusid)->delete();
+        return "Success";
     }
 }
