@@ -41,13 +41,12 @@ class CarController extends Controller
     public function store(Request $request){
         if (!($request->cancel)){
             $this->CarCustomerService->newCars($request);
+            redirect('car')->with('Cusid',$request->Cusid);
         }
         $list=$this->CarCustomerService->getCars($request->Cusid);
         $customer=$list['customer'];
         $cars=$list['cars'];
-        //return redirect()->action('CarController@index',['customer'=>$customer,'cars'=>$cars]);
-        //return View::make('car',['customer'=>$customer,'cars'=>$cars]);
-        return redirect()->back()->withInput(['customer'=>$customer,'cars'=>$cars]);
+        return View::make('car',['customer'=>$customer,'cars'=>$cars]);
     }
     //編輯客戶車輛程式
     public function edit(Request $request){
